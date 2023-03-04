@@ -1,9 +1,27 @@
-import React from 'react'
+import React from 'react';
+import '../components/CSS/style.css';
+import Stack from '@mui/material/Stack';
+import {Link} from 'react-router-dom'
 
-const Home = () => {
+function Home() {
   return (
-    <div>Home</div>
-  )
+    <div className="HomePage">
+      <h1 className="text">Welcome to My Dating Site</h1>
+      <p className="text">Find your perfect match with us today!</p>
+      <Stack direction="row" spacing={2} justifyContent="center">
+        <Link to="/registration" className="cta-button">
+                
+            Join Now
+            
+        </Link>
+        <Link to="/login" className="cta-button">
+            Register
+        </Link>
+
+      </Stack>
+   
+    </div>
+  );
 }
 
-export default Home
+export default Home;

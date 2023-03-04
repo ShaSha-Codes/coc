@@ -1,0 +1,32 @@
+.HomePage {
+  background: linear-gradient(to bottom right, #FFB6C1, #FF69B4);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.text {
+  color: #fff;
+  text-align: center;
+  
+}
+
+
+.cta-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #FF69B4;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  text-decoration: none;
+}
+
+.cta-button:hover {
+  background-color: #FF69B4;
+  color: #fff;
+}
