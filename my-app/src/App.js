@@ -11,6 +11,7 @@ import { useDispatch } from 'react-redux';
 import Registration from './pages/Registration';
 import Selection from './pages/Selection'
 import Profile from './pages/Profile';
+import UserDisplay from './pages/UserDisplay';
 
 
 function App() {

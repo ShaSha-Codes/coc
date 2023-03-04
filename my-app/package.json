@@ -6,6 +6,7 @@
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@material-ui/core": "^4.12.4",
+    "@material-ui/icons": "^4.11.3",
     "@mui/icons-material": "^5.11.11",
     "@mui/material": "^5.11.11",
     "@react-spring/web": "^9.5.5",
@@ -15,21 +16,15 @@
     "@testing-library/user-event": "^14.4.3",
     "firebase": "^9.17.2",
     "jquery": "^3.6.3",
-<<<<<<< HEAD
-    "nanoid": "^4.0.1",
-=======
     "mdb-react-ui-kit": "^5.1.0",
->>>>>>> a9b072c559788082f57895e6c5cea8de3610c4a3
+    "nanoid": "^4.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.8.2",
     "react-scripts": "5.0.1",
-<<<<<<< HEAD
     "react-tinder-card": "^1.6.2",
-=======
     "react-vanilla-tilt": "^1.0.0",
->>>>>>> a9b072c559788082f57895e6c5cea8de3610c4a3
     "web-vitals": "^2.1.4"
   },
   "scripts": {

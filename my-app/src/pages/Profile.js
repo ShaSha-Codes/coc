@@ -10,6 +10,7 @@ import Tilt from "react-vanilla-tilt";
 import MaleIcon from '@mui/icons-material/Male';
 import { Button, IconButton } from '@mui/material'
 import SendIcon from '@mui/icons-material/Send';
+import { useNavigate } from 'react-router'
 
 
 function Profile() {
@@ -17,6 +18,8 @@ function Profile() {
     const [userData, setuserData] = useState()
     const userValue = useSelector(selectUserdata)
     const [formDate, setformDate] = useState()
+    const navigation = useNavigate()
+    console.log(userValue)
 
     // useEffect(async () => {
     //     const docRef = doc(db, "userInfo", userValue.email);
@@ -25,7 +28,7 @@ function Profile() {
     //         setformDate(docSnap.data())
     //         console.log("This seller data", docSnap.data());
     //     }
-    // }, [])
+    // }, [userValue])
 
 
     return (
@@ -36,32 +39,32 @@ function Profile() {
             >
                 <div className="profile-container">
                     <div className="profile-body">
-                        <img src="https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8&w=1000&q=80" alt="avatar" />
+                        <img src={userValue.photourl} />
                     </div>
                     <div className="profile-header">
                         <div className='profile_name'>
-                            <h1 style={{ marginRight: "20px" }}>Saurabh Yadav</h1>
+                            <h1 style={{ marginRight: "20px" }}>{userValue.name}</h1>
                             <IconButton style={{ color: "crimson", size: "40px" }}>
                                 <MaleIcon />
                             </IconButton>
                         </div>
-                        <h3 style={{ margin: "5px" }}>Saurabh@gmail.com</h3>
-                        <div style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center",margin:"5px" }}>
+                        <h3 style={{ margin: "5px" }}>{userValue.email}</h3>
+                        <div style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center", margin: "5px" }}>
                             <h5>Hobbies :</h5>
-                            <p>Chess</p>
+                            <p>{userValue.hobbies}</p>
                         </div>
-                        <div style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center",margin:"5px" }}>
+                        <div style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center", margin: "5px" }}>
                             <h5>Address :</h5>
-                            <p> Thakur Village</p>
+                            <p>{userValue.address}</p>
                         </div>
-                        <div style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center",margin:"5px" }}>
+                        <div style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center", margin: "5px" }}>
                             <h5>Phone :</h5>
-                            <p> 9082502271</p>
+                            <p>{userValue.phone}</p>
                         </div>
                     </div>
                 </div>
             </Tilt>
-            <Button variant="contained" endIcon={<SendIcon />}>
+            <Button onClick={() => navigation("/selection")} variant="contained" endIcon={<SendIcon />}>
                 Find The Match
             </Button>
 

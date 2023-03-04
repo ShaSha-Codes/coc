@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  userData: [],
+  userData: "",
 };
 
 export const navSlice = createSlice({
@@ -9,12 +9,9 @@ export const navSlice = createSlice({
   initialState,
   reducers: {
     ADD_TO_USERDATA: (state, action) => {
-      return {
-        ...state,
-        userData: [...state.userData, action.payload],
-      };
+      state.userData = action.payload
     },
-    
+
   },
 });
 
