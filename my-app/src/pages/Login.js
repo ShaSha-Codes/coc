@@ -3,14 +3,17 @@ import { makeStyles } from "@material-ui/core/styles";
 import { TextField, Button, Typography } from "@material-ui/core";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
-import { app } from "../firebase";
+import { app, db } from "../firebase";
 import Alert from "@mui/material/Alert";
 import IconButton from "@material-ui/core/IconButton";
 import Collapse from "@material-ui/core/Collapse";
 import CloseIcon from "@mui/icons-material/Close";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import {  onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged } from "firebase/auth";
+import { doc, getDoc } from "@firebase/firestore";
+import { ADD_TO_USERDATA } from "../feature/navSlice";
+import { useDispatch } from "react-redux";
 const useStyles = makeStyles((theme) => ({
   form: {
     display: "flex",
@@ -31,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Login() {
+  const dispatch = useDispatch()
   let navigate = useNavigate();
   const classes = useStyles();
   const [formData, setFormData] = React.useState({
@@ -48,16 +52,25 @@ function Login() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    try {
-      let data = await signInWithEmailAndPassword(
-        auth,
-        formData.email,
-        formData.password
-      );
-      navigate("/profile");
-    } catch (error) {
-      setToggler(true);
-    }
+
+    signInWithEmailAndPassword(auth, formData.email, formData.password)
+      .then(async (userCredential) => {
+        var userinfo = userCredential.user;
+        const docRef = doc(db, "userInfo", userinfo.email);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          dispatch(ADD_TO_USERDATA(docSnap.data()));
+        }
+        // console.log("This login time data", userinfo.displayName);
+        // setuser(userinfo);
+        navigate("/profile");
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        // console.log(errorCode);
+        const errorMessage = error.message;
+        // console.log(errorMessage);
+      });
 
     onAuthStateChanged(auth, (user) => {
       if (user) {
