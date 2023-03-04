@@ -15,7 +15,7 @@ function Home() {
             
         </Link>
         <Link to="/login" className="cta-button">
-            Register
+            Login
         </Link>
 
       </Stack>
