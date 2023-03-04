@@ -1,27 +1,68 @@
-import React from 'react'
-import TinderCard from 'react-tinder-card'
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import { Button, CardActionArea, CardActions } from '@mui/material';
+import React, { useState, useEffect } from "react";
+import TinderCard from "react-tinder-card";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
+import { Button, CardActionArea, CardActions } from "@mui/material";
 
+import { app, db } from "../firebase";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import {
+  collection,
+  addDoc,
+  getDocs,
+  updateDoc,
+  doc,
+  deleteDoc,
+  where,
+  query,
+  onSnapshot,
+} from "firebase/firestore";
 
 const Selection = () => {
+  const auth = getAuth();
+  const collectionsRef = collection(db, "userInfo");
+  const [data, setdata] = useState([]);
+  const filter = query(collectionsRef, where("name", "==", "Saurabh Yadav"));
+
   const onSwipe = (direction) => {
-    console.log('You swiped: ' + direction)
-  }
+    console.log("You swiped: " + direction);
+  };
 
   const onCardLeftScreen = (myIdentifier) => {
-    console.log(myIdentifier + ' left the screen')
-  }
+    console.log(myIdentifier + " left the screen");
+  };
+  console.log("user", auth.currentUser);
+  const filterQuery = query(
+    collectionsRef,
+    where("gender", "==", "male"),
+    // where("gym", "in", ["hobbies"])
+  );
+
+  const getData = async () => {
+    const res = await getDocs(filterQuery);
+    setdata(res.docs)
+  };
+
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-      <div style={{ maxWidth: '500px' }}>
-
-        <TinderCard onSwipe={onSwipe} onCardLeftScreen={() => onCardLeftScreen('fooBar')} preventSwipe={['right', 'left']}>
-
-          <Card sx={{ maxWidth:"400px", minHeight: '400px' }}>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100vh",
+      }}
+    >
+      <div style={{ maxWidth: "500px" }}>
+       {data?.map((item)=>{
+        return (
+          <TinderCard
+          onSwipe={onSwipe}
+          onCardLeftScreen={() => onCardLeftScreen("fooBar")}
+          preventSwipe={["right", "left"]}
+        >
+          <Card sx={{ maxWidth: 345, minHeight: "400px" }}>
             <CardActionArea>
               <CardMedia
                 component="img"
@@ -31,16 +72,18 @@ const Selection = () => {
               />
               <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
-                  Lizard
+                  {item.data().name}
                 </Typography>
               </CardContent>
             </CardActionArea>
           </Card>
         </TinderCard>
+        )
+       }) }
+        <button onClick={getData}>submit</button>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Selection
-
+export default Selection;
