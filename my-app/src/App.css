@@ -108,6 +108,12 @@
 .accept {
   background-color: rgb(0, 208, 170);
   color: white;
+  
+
+}
+
+.accept:hover{
+  background-color: rgb(10, 55, 47);
 }
 
 .reject {
@@ -115,9 +121,14 @@
   color: white;
 }
 
+.reject:hover{
+  background-color: rgb(99, 21, 21);
+}
+
 .row button {
   width: 80px;
   height: 80px;
   border-radius: 50%;
   font-size: larger;
+  border: 0;
 }
