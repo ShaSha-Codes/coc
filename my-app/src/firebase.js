@@ -2,6 +2,10 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 
+import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
+
 const firebaseConfig = {
   apiKey: "AIzaSyCq8eR79_VWhLk3Kaektq7cas9GfU5D9q8",
   authDomain: "clash-of-codes-673c3.firebaseapp.com",
@@ -12,6 +16,10 @@ const firebaseConfig = {
   measurementId: "G-STSKQPY798"
 };
 
-
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
+
+const auth = getAuth();
+const db = getFirestore();
+
+export { auth, db, app };
