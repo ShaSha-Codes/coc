@@ -12,6 +12,8 @@ import Registration from './pages/Registration';
 import Selection from './pages/Selection'
 import Profile from './pages/Profile';
 import Chat from './pages/Chat'
+import UserDisplay from './pages/UserDisplay';
+
 
 function App() {
 
