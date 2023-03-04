@@ -1,11 +1,24 @@
 import React from "react";
 import profile from '../../assets/profile.jpg'
+import { useSelector } from 'react-redux'
+import { selectUserdata } from '../../feature/navSlice'
+
+
 const Matches = () => {
+
+  const userValue = useSelector(selectUserdata)
+  const [requests, setRequests] = React.useState([])
+  React.useEffect(() => {
+    if (userValue) {
+      setRequests(userValue.requests)
+    }
+    console.log(requests)    
+  })
   return (
     
        
       <div className="matches-container">
-         <span>Your Matches</span>
+         <span style={{marginTop:'30px'}}>Your Matches</span>
         <div className="matches-textbox">
             
           <div className="row">
@@ -19,6 +32,9 @@ const Matches = () => {
               <button className="reject">-</button>
             </div>
           </div>
+
+
+
         </div>
       </div>
    

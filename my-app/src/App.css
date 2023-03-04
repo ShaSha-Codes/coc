@@ -60,13 +60,14 @@
   -webkit-box-shadow: 10px 10px 36px -11px rgba(150, 150, 150, 1);
   -moz-box-shadow: 10px 10px 36px -11px rgba(150, 150, 150, 1);
   box-shadow: 10px 10px 36px -11px rgba(150, 150, 150, 1);
-  height: 70%;
-  width: 50%;
+  height: 100%;
+  width: 60%;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: x-large;
   flex-direction: column;
+
 }
 
 .matches-textbox {
@@ -74,7 +75,7 @@
   width: 80%;
   height: 80%;
   padding: 30px;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
   display: flex;
   
 }
