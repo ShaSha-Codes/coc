@@ -11,6 +11,8 @@ import MaleIcon from '@mui/icons-material/Male';
 import { Button, IconButton } from '@mui/material'
 import SendIcon from '@mui/icons-material/Send';
 import { useNavigate } from 'react-router'
+import FemaleIcon from '@mui/icons-material/Female';
+import TransgenderIcon from '@mui/icons-material/Transgender';
 
 
 function Profile() {
@@ -45,7 +47,10 @@ function Profile() {
                         <div className='profile_name'>
                             <h1 style={{ marginRight: "20px" }}>{userValue.name}</h1>
                             <IconButton style={{ color: "crimson", size: "40px" }}>
-                                <MaleIcon />
+                                {
+                                    userValue.gender === "male" ?
+                                        <MaleIcon /> : userData.userValue.gender === "other" ? <TransgenderIcon /> : <FemaleIcon />
+                                }
                             </IconButton>
                         </div>
                         <h3 style={{ margin: "5px" }}>{userValue.email}</h3>
