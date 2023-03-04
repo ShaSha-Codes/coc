@@ -11,6 +11,8 @@ import { useDispatch } from 'react-redux';
 import Registration from './pages/Registration';
 import Selection from './pages/Selection'
 import Profile from './pages/Profile';
+import Chat from './pages/Chat'
+import UserDisplay from './pages/UserDisplay';
 
 
 function App() {
@@ -41,6 +43,7 @@ function App() {
       <Route path="/login" element={<Login />} />
       <Route path="/selection" element={<Selection />} />
       <Route path="/profile" element={<Profile />} />
+      <Route path="/chat" element={<Chat />} />
     </Routes>
   );
 }
