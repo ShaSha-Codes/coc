@@ -8,6 +8,7 @@ import { auth, db } from './firebase';
 import { ADD_TO_USERDATA } from './feature/navSlice';
 import { doc, getDoc } from 'firebase/firestore';
 import { useDispatch } from 'react-redux';
+import Registration from './pages/Registration';
 
 function App() {
 
@@ -33,7 +34,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/login" element={<Login />} />
+      <Route path="/registration" element={<Registration />} />
     </Routes>
   );
 }

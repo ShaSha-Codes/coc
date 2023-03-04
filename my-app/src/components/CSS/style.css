@@ -30,3 +30,28 @@
   background-color: #FF69B4;
   color: #fff;
 }
+
+.MuiFormControl-root {
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .MuiFormLabel-root {
+    font-weight: bold;
+  }
+  
+  .MuiInputLabel-shrink {
+    transform: translate(0, 1.5px) scale(0.9);
+  }
+  
+  .MuiInputBase-root {
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .MuiButton-root {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 400px;
+  }

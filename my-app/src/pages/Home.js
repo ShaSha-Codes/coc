@@ -9,12 +9,12 @@ function Home() {
       <h1 className="text">Welcome to My Dating Site</h1>
       <p className="text">Find your perfect match with us today!</p>
       <Stack direction="row" spacing={2} justifyContent="center">
-        <Link to="/registration" className="cta-button">
+        <Link to="/login" className="cta-button">
                 
             Join Now
             
         </Link>
-        <Link to="/login" className="cta-button">
+        <Link to="/registration" className="cta-button">
             Register
         </Link>
 
