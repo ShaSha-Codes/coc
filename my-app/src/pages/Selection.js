@@ -37,7 +37,7 @@ const Selection = () => {
   const filterQuery = query(
     collectionsRef,
     where("gender", "==", "male"),
-    // where("gym", "in", ["hobbies"])
+    where("gym", "in", ["hobbies"])
   );
 
   const getData = async () => {
