@@ -2,6 +2,8 @@ import React from 'react'
 import TinderCard from 'react-tinder-card';
 // import database from '../firebase';
 import '../CSS/Cards.css'
+import { doc, updateDoc,getDoc } from "firebase/firestore";
+import {db} from '../../firebase'
 
 function CardsUi(props) {
     const [lastDirection, setLastDirection] = React.useState();
@@ -25,9 +27,17 @@ function CardsUi(props) {
 
     // Good
     // setPeople([...people, 'sashen', 'hasindu'])
-    const swiped = (direction, nameToDelete) => {
-        console.log('removing: ' + nameToDelete+" "+direction)
-        setLastDirection(direction)
+    const swiped = async (direction, nameToDelete) => {
+        if(direction === 'right'){
+            const ref = doc(db, "userInfo", props.data.email);
+            const docSnap = await getDoc(ref)
+            const data=docSnap.data()
+            await updateDoc(ref, {
+                request: [...data.request, props.data.email]
+              });
+         
+        }
+        
       }
 
     return (
