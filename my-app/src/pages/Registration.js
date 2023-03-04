@@ -6,13 +6,15 @@ import Paper from '@mui/material/Paper';
 import '../components/CSS/style.css';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth, db } from '../firebase';
+import {app,storage} from '../firebase'
+import {ref,uploadBytesResumable, getDownloadURL} from 'firebase/storage'
 import { doc, getDoc, serverTimestamp, setDoc } from 'firebase/firestore';
 import Alert from '@mui/material/Alert';
 import { useState } from 'react';
 import { ADD_TO_USERDATA } from '../feature/navSlice';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-
+import { nanoid } from 'nanoid'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -62,8 +64,9 @@ function Registration() {
     hobbies: '',
     xcode: 0,
     ycode: 0,
+    photourl:"",
   })
-
+  const [imageData,setImageData]=React.useState({})
   const handleChange = (event) => {
     setFormData({
       ...formData,
@@ -78,25 +81,77 @@ function Registration() {
     var words = formData.hobbies.split(",");
     if (!docSnap.exists()) {
       createUserWithEmailAndPassword(auth, formData.email, formData.password)
-        .then((userCredential) => {
+        .then(async(userCredential) => {
           var user = userCredential.user;
           console.log(user);
           user.displayName = formData.name;
           // setuser(user);
           dispatch(ADD_TO_USERDATA(formData));
-          setDoc(doc(db, "userInfo", `${formData.email}`), {
-            name: formData.name,
-            email: formData.email,
-            address: formData.address,
-            phone: formData.phone,
-            gender: formData.gender,
-            preference: formData.preference,
-            hobbies: words,
-            timestemps: serverTimestamp(),
-            xcode: formData.xcode,
-            ycode: formData.ycode,
-            photourl: "",
-          });
+
+
+          const storageRef = ref(storage, `images/${nanoid(5)}`);
+        
+          
+
+
+
+
+const uploadTask = uploadBytesResumable(storageRef, imageData);
+
+ uploadTask.on('state_changed', 
+  (snapshot) => {
+    const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+    console.log('Upload is ' + progress + '% done');
+    switch (snapshot.state) {
+      case 'paused':
+        console.log('Upload is paused');
+        break;
+      case 'running':
+        console.log('Upload is running');
+        break;
+    }
+  }, 
+  (error) => {
+  }, 
+  () => {
+    getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+        console.log('File available at', downloadURL)
+        
+       
+       setDoc(doc(db, "userInfo", `${formData.email}`), {
+        name: formData.name,
+        email: formData.email,
+        address: formData.address,
+        phone: formData.phone,
+        gender: formData.gender,
+        preference: formData.preference,
+        hobbies: words,
+        timestemps: serverTimestamp(),
+        xcode: formData.xcode,
+        ycode: formData.ycode,
+        photourl: downloadURL,
+      });
+     
+    });
+  }
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+         
           navigation("/profile")
         })
         .catch((error) => {
@@ -153,7 +208,7 @@ function Registration() {
           <TextField onChange={handleChange} className={classes.textField} value={formData.hobbies} id="hobbies" name="hobbies" label="Hobbies (Separate them with spaces)" multiline rows={4} />
           <TextField onChange={handleChange} className={classes.textField} value={formData.address} id="address" name="address" label="Address" />
           <TextField onChange={handleChange} className={classes.textField} value={formData.phone} id="phone" name="phone" label="Phone" type="tel" />
-
+            <input type="file" onChange={(event)=>{setImageData(event.target.files[0])}}/>
           <Button className={classes.button} onClick={() => registerWithEmailId()} variant="contained" color="primary" type="submit">
             Register
           </Button>
