@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { TextField, Button, FormControl, InputLabel, Select, MenuItem, FormHelperText, formatMs } from '@material-ui/core';
 import Typography from '@mui/material/Typography';
@@ -12,8 +12,7 @@ import { useState } from 'react';
 import { ADD_TO_USERDATA } from '../feature/navSlice';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-
-
+import { height } from '@mui/system';
 
 const useStyles = makeStyles((theme) => ({
   form: {
@@ -48,8 +47,19 @@ function Registration() {
     console.log(formData)
   };
   const [toggler, settoggler] = useState(false);
+  const[xcode,setxcode]= useState(0);
+  const[ycode,setycode]= useState(0);
   const navigation = useNavigate()
   const dispatch = useDispatch()
+
+  React.useEffect(()=>{
+    setFormData((prev)=>{
+      let tempData={...prev,xcode:xcode,ycode:ycode}
+      return tempData
+    }
+  
+    )
+  },[xcode,ycode])
 
   const [formData, setFormData] = React.useState({
     name: '',
@@ -60,8 +70,8 @@ function Registration() {
     gender: '',
     preference: '',
     hobbies: '',
-    xcode: 0,
-    ycode: 0,
+    xcode: xcode,
+    ycode: ycode,
   })
 
   const handleChange = (event) => {
@@ -71,7 +81,28 @@ function Registration() {
     });
   }
 
-  const registerWithEmailId = async () => {
+
+const getxyCodes =()=>{
+
+if(!navigator.geolocation){
+console.log("Browser doesnt support geolocation")
+
+}else{
+  navigator.geolocation.getCurrentPosition((position)=>{
+    console.log(position.coords.latitude);
+    setxcode(position.coords.latitude);
+    console.log(position.coords.longitude);
+    setycode(position.coords.longitude);
+  },()=>{
+console.log("Unable to get coordinates");
+  });
+}
+
+}
+
+
+
+const registerWithEmailId = async () => {
     // console.log(formData)
     const docRef = doc(db, "userInfo", formData.email);
     const docSnap = await getDoc(docRef);
@@ -152,6 +183,11 @@ function Registration() {
           </FormControl>
           <TextField onChange={handleChange} className={classes.textField} value={formData.hobbies} id="hobbies" name="hobbies" label="Hobbies (Separate them with spaces)" multiline rows={4} />
           <TextField onChange={handleChange} className={classes.textField} value={formData.address} id="address" name="address" label="Address" />
+          <TextField onChange={handleChange} className={classes.textField} value={formData.xcode} id="xcode" name="xcode" label="Latitude" />
+          <TextField onChange={handleChange} className={classes.textField} value={formData.ycode} id="ycode" name="ycode" label="Longitude" />
+          <Button className={classes.button} onClick={()=> getxyCodes()} color="secondary" variant="contained">
+            Get current coordinates
+          </Button>
           <TextField onChange={handleChange} className={classes.textField} value={formData.phone} id="phone" name="phone" label="Phone" type="tel" />
 
           <Button className={classes.button} onClick={() => registerWithEmailId()} variant="contained" color="primary" type="submit">
