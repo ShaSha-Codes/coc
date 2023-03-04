@@ -2,7 +2,6 @@ import React from 'react';
 import '../components/CSS/style.css';
 import Stack from '@mui/material/Stack';
 import { Link } from 'react-router-dom'
-import Matches from '../components/JS/Matches';
 
 function Home() {
   return (
@@ -17,7 +16,7 @@ function Home() {
           Login
         </Link>
       </Stack>
-   
+  
     </div>
   );
 }
