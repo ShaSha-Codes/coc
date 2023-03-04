@@ -65,7 +65,7 @@ function Profile() {
                 </div>
             </Tilt>
             <Button onClick={() => navigation("/selection")} variant="contained" endIcon={<SendIcon />}>
-                Find The Match
+                Find a Match
             </Button>
 
         </div>
