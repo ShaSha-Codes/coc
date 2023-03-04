@@ -14,6 +14,7 @@ import Profile from './pages/Profile';
 import Chat from './pages/Chat'
 import UserDisplay from './pages/UserDisplay';
 import UserCard from './components/JS/UserCard';
+import Matches from './components/JS/Matches';
 
 
 function App() {
@@ -45,6 +46,7 @@ function App() {
       <Route path="/selection" element={<UserCard />} />
       <Route path="/profile" element={<Profile />} />
       <Route path="/chat" element={<Chat />} />
+      <Route path="/matches" element={<Matches />} />
     </Routes>
   );
 }
