@@ -10,6 +10,7 @@ import { doc, getDoc } from 'firebase/firestore';
 import { useDispatch } from 'react-redux';
 import Registration from './pages/Registration';
 import Selection from './pages/Selection'
+import Profile from './pages/Profile';
 
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
       <Route path="/registration" element={<Registration />} />
       <Route path="/login" element={<Login />} />
       <Route path="/selection" element={<Selection />} />
+      <Route path="/profile" element={<Profile />} />
     </Routes>
   );
 }
