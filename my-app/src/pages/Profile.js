@@ -13,6 +13,7 @@ import SendIcon from '@mui/icons-material/Send';
 import { useNavigate } from 'react-router'
 import FemaleIcon from '@mui/icons-material/Female';
 import TransgenderIcon from '@mui/icons-material/Transgender';
+import Matches from '../components/JS/Matches'
 
 
 function Profile() {
@@ -69,6 +70,7 @@ function Profile() {
                     </div>
                 </div>
             </Tilt>
+            <Matches />
             <Button onClick={() => navigation("/selection")} variant="contained" endIcon={<SendIcon />}>
                 Find a Match
             </Button>
