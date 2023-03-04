@@ -1,5 +1,7 @@
 import React from 'react'
 import TinderCard from 'react-tinder-card';
+import { useSelector } from 'react-redux'
+import { selectUserdata } from '../../feature/navSlice'
 // import database from '../firebase';
 import '../CSS/Cards.css'
 import { doc, updateDoc,getDoc } from "firebase/firestore";
@@ -7,6 +9,7 @@ import {db} from '../../firebase'
 
 function CardsUi(props) {
     const [lastDirection, setLastDirection] = React.useState();
+    const userValue = useSelector(selectUserdata)
     // const [people, setPeople] = useState([]);
 
     // useEffect(() => {
@@ -33,7 +36,7 @@ function CardsUi(props) {
             const docSnap = await getDoc(ref)
             const data=docSnap.data()
             await updateDoc(ref, {
-                request: [...data.request, props.data.email]
+                request: [...data.request, userValue.email]
               });
          
         }

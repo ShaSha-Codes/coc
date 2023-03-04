@@ -75,7 +75,7 @@
   width: 80%;
   height: 80%;
   padding: 30px;
-  /* overflow-y: scroll; */
+  overflow-y: scroll;
   display: flex;
   
 }
@@ -99,7 +99,7 @@
 }
 .right {
   display: flex;
-  gap: 20px;
+  
 }
 
 .left {
