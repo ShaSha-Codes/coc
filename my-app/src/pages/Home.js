@@ -1,7 +1,8 @@
 import React from 'react';
 import '../components/CSS/style.css';
 import Stack from '@mui/material/Stack';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import Matches from '../components/JS/Matches';
 
 function Home() {
   return (
@@ -10,14 +11,11 @@ function Home() {
       <p className="text">Find your perfect match with us today!</p>
       <Stack direction="row" spacing={2} justifyContent="center">
         <Link to="/registration" className="cta-button">
-                
-            Join Now
-            
+          Join Now
         </Link>
         <Link to="/login" className="cta-button">
-            Login
+          Login
         </Link>
-
       </Stack>
    
     </div>
