@@ -2,9 +2,10 @@ import React from "react";
 import profile from '../../assets/profile.jpg'
 const Matches = () => {
   return (
-    <div className="matches">
-        <span>Your Matches</span>
+    
+       
       <div className="matches-container">
+         <span>Your Matches</span>
         <div className="matches-textbox">
             
           <div className="row">
@@ -20,7 +21,7 @@ const Matches = () => {
           </div>
         </div>
       </div>
-    </div>
+   
   );
 };
 

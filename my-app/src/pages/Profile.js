@@ -72,7 +72,7 @@ function Profile() {
             <Button onClick={() => navigation("/selection")} variant="contained" endIcon={<SendIcon />}>
                 Find a Match
             </Button>
-
+                                
         </div>
     )
 }

@@ -66,6 +66,7 @@
   justify-content: center;
   align-items: center;
   font-size: x-large;
+  flex-direction: column;
 }
 
 .matches-textbox {
@@ -75,7 +76,9 @@
   padding: 30px;
   overflow-y: scroll;
   display: flex;
+  
 }
+
 
 .row {
   display: flex;
