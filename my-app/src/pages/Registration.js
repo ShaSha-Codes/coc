@@ -140,7 +140,7 @@ function Registration() {
               });
             }
           );
-          navigation("/profile")
+          navigation("/login")
         })
         .catch((error) => {
           var errorCode = error.code;

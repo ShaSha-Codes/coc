@@ -13,6 +13,7 @@ import Selection from './pages/Selection'
 import Profile from './pages/Profile';
 import Chat from './pages/Chat'
 import UserDisplay from './pages/UserDisplay';
+import UserCard from './components/JS/UserCard';
 
 
 function App() {
@@ -41,7 +42,7 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="/registration" element={<Registration />} />
       <Route path="/login" element={<Login />} />
-      <Route path="/selection" element={<Selection />} />
+      <Route path="/selection" element={<UserCard />} />
       <Route path="/profile" element={<Profile />} />
       <Route path="/chat" element={<Chat />} />
     </Routes>
