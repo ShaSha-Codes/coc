@@ -121,6 +121,9 @@ function Registration() {
                   xcode: formData.xcode,
                   ycode: formData.ycode,
                   photourl: downloadURL,
+                  request:[],
+                  accept:[],
+                  chat:""
                 });
 
                 dispatch(ADD_TO_USERDATA({
@@ -135,6 +138,9 @@ function Registration() {
                   xcode: formData.xcode,
                   ycode: formData.ycode,
                   photourl: downloadURL,
+                  request:[],
+                  accept:[],
+                  chat:""
                 }))
 
               });
