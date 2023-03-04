@@ -3,7 +3,8 @@ import TinderCard from 'react-tinder-card';
 // import database from '../firebase';
 import '../CSS/Cards.css'
 
-function CardsUi() {
+function CardsUi(props) {
+    const [lastDirection, setLastDirection] = React.useState();
     // const [people, setPeople] = useState([]);
 
     // useEffect(() => {
@@ -24,14 +25,18 @@ function CardsUi() {
 
     // Good
     // setPeople([...people, 'sashen', 'hasindu'])
+    const swiped = (direction, nameToDelete) => {
+        console.log('removing: ' + nameToDelete+" "+direction)
+        setLastDirection(direction)
+      }
 
     return (
         <div>
             <div className='card__container'>
                 {/* {people.map(person => ( */}
-                <TinderCard className='swipe' key={1} preventSwipe={['up', 'down']}>
-                    <div style={{ backgroundImage: `url("http://t2.gstatic.com/licensed-image?q=tbn:ANd9GcSStEXQ52SE6txqvnwfAyOZ-dt6fkkBqzcir0RaZkoG54dYK7UByieR90Nb18ON4rdZ6VyDNVuQdk1kXik")` }} className='card'>
-                        <h3>Elon Musk</h3>
+                <TinderCard className='swipe' onSwipe={(dir) => swiped(dir, props.data.name)} key={1} preventSwipe={['up', 'down']}>
+                    <div style={{ backgroundImage: `url(${props.data.photourl})` }} className='card'>
+                        <h3>{props.data.name}</h3>
                     </div>
                 </TinderCard>
                 {/* ))} */}
