@@ -14,6 +14,10 @@ import { onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc } from "@firebase/firestore";
 import { ADD_TO_USERDATA } from "../feature/navSlice";
 import { useDispatch } from "react-redux";
+import '../components/CSS/style.css';
+
+
+
 const useStyles = makeStyles((theme) => ({
   form: {
     display: "flex",
@@ -81,7 +85,7 @@ function Login() {
   };
 
   return (
-    <div
+    <div className="login-body"
       style={{
         display: "flex",
         justifyContent: "center",

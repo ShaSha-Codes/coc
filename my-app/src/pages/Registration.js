@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
     height: '56px',
     maxWidth: '400px',
   },
-}));
+  }));
 
 
 
@@ -207,7 +207,7 @@ const registerWithEmailId = async () => {
   };
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center' }}>
+    <div className='reg-body' style={{ display: 'flex', justifyContent: 'center' }}>
 
       <Paper elevation={6} sx={{ borderRadius: "20px", margin: "20px", width: "600px" }}>
 
