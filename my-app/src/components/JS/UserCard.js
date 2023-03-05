@@ -8,7 +8,7 @@ import { Button } from '@mui/material'
 import '../CSS/UserDisplay.css'
 import thumbsUp from "../../assets/thumbs-up.svg";
 import thumbsDown from "../../assets/thumbs-down.svg";
-
+import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn';
 import {
     selectUserdata
 } from  '../../feature/navSlice'
@@ -92,6 +92,9 @@ function UserCard() {
       <div style={{ float: "right", padding: "70px" }}>
         <img src={thumbsUp} width={200} height={200} />
       </div>
+      <KeyboardReturnIcon>
+        
+      </KeyboardReturnIcon>
              
            
         </div>
