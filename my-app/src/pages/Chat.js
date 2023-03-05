@@ -2,6 +2,8 @@ import React from 'react'
 import {auth} from '../firebase'
 import ChatBubble from 'react-chat-bubble';
 import TextField from '@mui/material/TextField';
+import '../components/CSS/style.css';
+
 
 const Chat = () => {
   const [newMsg, setNewMsg] = React.useState('')
@@ -88,7 +90,7 @@ const Chat = () => {
   }
 
   return (
-    <div style={{height:'100vh'}}>
+    <div className='chat-body' style={{height:'100vh'}}>
       {<ChatBubble style={{width:'500px'}}  messages = {msgArray} />}
       <input value={newMsg} placeholder="Message Here" style={ { position: 'fixed',fontSize:'2em',
       height: '50px', bottom: 0, left: 0, right: 0, zIndex: 9999} } onChange={(event)=>setNewMsg(event.target.value) } onKeyDown={handleKeyDown}  />

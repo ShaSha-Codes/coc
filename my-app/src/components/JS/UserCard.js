@@ -5,6 +5,8 @@ import SwipeCards from './SwipeCards'
 import {useSelector} from 'react-redux'
 import { db } from '../../firebase'
 import { Button } from '@mui/material'
+import '../CSS/UserDisplay.css'
+
 import {
     selectUserdata
 } from  '../../feature/navSlice'
@@ -53,7 +55,7 @@ function UserCard() {
    
 
     return (
-        <div>
+        <div className='cards-body'>
             <Header />
             {cardData}
          

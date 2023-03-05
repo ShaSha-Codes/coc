@@ -12,6 +12,7 @@
     align-items: center;
     max-width: 600px;
     flex-wrap: wrap;
+   
 }
 
 .product_containers > .product_cards{
@@ -101,5 +102,4 @@
 .button_hide{
     display:none;
 }
-
 

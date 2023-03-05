@@ -63,6 +63,6 @@
     max-width: 400px;
   }
 
- .reg-body,.login-body{
+ .reg-body,.login-body, .chat-body, .selection-body{
   background-image:linear-gradient(darkblue,lightblue) ;
  }

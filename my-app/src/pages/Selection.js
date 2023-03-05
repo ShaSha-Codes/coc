@@ -6,6 +6,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Button, CardActionArea, CardActions } from "@mui/material";
 
+
 import { app, db } from "../firebase";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import {
@@ -19,6 +20,7 @@ import {
   query,
   onSnapshot,
 } from "firebase/firestore";
+import { lightBlue } from "@mui/material/colors";
 
 const Selection = () => {
   const auth = getAuth();
@@ -46,8 +48,9 @@ const Selection = () => {
   };
 
   return (
-    <div
+    <div className="selection-body"
       style={{
+        
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
