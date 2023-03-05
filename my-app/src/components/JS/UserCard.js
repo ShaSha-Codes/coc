@@ -92,9 +92,12 @@ function UserCard() {
       <div style={{ float: "right", padding: "70px" }}>
         <img src={thumbsUp} width={200} height={200} />
       </div>
+      <br/>
+      <div style={{marginTop: "500px", display:"flex", justifyContent:"center"}}>
       <KeyboardReturnIcon>
         
       </KeyboardReturnIcon>
+      </div>
              
            
         </div>
