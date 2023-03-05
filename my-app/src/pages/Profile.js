@@ -24,15 +24,13 @@ function Profile() {
     const navigation = useNavigate()
     console.log(userValue)
 
-    // useEffect(async () => {
-    //     const docRef = doc(db, "userInfo", userValue.email);
-    //     const docSnap = await getDoc(docRef);
-    //     if (docSnap.exists()) {
-    //         setformDate(docSnap.data())
-    //         console.log("This seller data", docSnap.data());
-    //     }
-    // }, [userValue])
-
+    const navigateFunction=()=>{
+        if(userValue.chat!==""){
+            navigation("/chat")
+        }else{
+            navigation("/selection")
+        }
+    }
 
     return (
         <div className="productitem">
@@ -71,7 +69,7 @@ function Profile() {
                 </div>
             </Tilt>
             <Matches />
-            <Button sx={{marginTop:'30px'}} onClick={() => navigation("/selection")} variant="contained" endIcon={<SendIcon />}>
+            <Button sx={{marginTop:'30px'}} onClick={() => navigateFunction()} variant="contained" endIcon={<SendIcon />}>
                 Find a Match
             </Button>
                                 

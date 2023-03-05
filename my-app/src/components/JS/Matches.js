@@ -2,13 +2,15 @@ import React from "react";
 import profile from '../../assets/profile.jpg'
 import { useSelector } from 'react-redux'
 import { selectUserdata } from '../../feature/navSlice'
-import { doc, updateDoc,getDoc,addDoc,collection } from "firebase/firestore";
+import { doc, updateDoc,getDoc,addDoc,collection,setDoc } from "firebase/firestore";
 import {db} from '../../firebase'
 import Stack from '@mui/material/Stack';
+import { useNavigate } from 'react-router-dom';
 import { nanoid } from 'nanoid'
 
 
 const Matches = () => {
+  const navigation = useNavigate()
   const userValue =  useSelector(selectUserdata)
   const [comp,setComp]=React.useState([])
 
@@ -45,10 +47,24 @@ const Matches = () => {
           timestemps:Date.now()
           });
 
-        const collectionsRef = collection(db, newChannel);
-        await addDoc(collectionsRef, {
-          comment: []
-          })
+
+          setDoc(doc(db, "chat", newChannel), {
+            email1:userValue.email,
+            email2:email,
+            photo1:userValue.photourl,
+            photo2:data.photourl,
+            name1:userValue.name,
+            name2:data.name,
+            comment:[]
+          });
+        // const collectionsRef = collection(db, newChannel);
+        // await addDoc(collectionsRef, {
+        //   comment: []
+        //   })
+
+          navigation("/chat")
+
+          
          
   }
 
@@ -61,13 +77,13 @@ const Matches = () => {
         
         resData.push(
              
-          <div style={{marginRight:'auto'}} className="row">
+          <div className="row">
             <div className="avatar">
               <img src={tempData.photourl} width={100} height={100} className="img" />
             </div>
             <div className="left">{tempData.name}</div>
             
-            <div  className="right" style={{ marginLeft: "200px" }}>
+            <div  className="right">
               <button className="accept" onClick={()=>connectUsers(tempData.email)}>+</button>
               <button className="reject">-</button>
             </div>
@@ -95,10 +111,10 @@ const Matches = () => {
       <div className="matches-container">
          <span style={{marginTop:'30px'}}>Your Matches</span>
         <div className="matches-textbox">
-         <Stack spacing={2} alignItems="center">
+       
   
           {comp}
-        </Stack>
+       
 
 
         </div>

@@ -57,11 +57,30 @@ function UserCard() {
     return (
         <div className='cards-body'>
             <Header />
-            {cardData}
-         
-            {toggler && <Button onClick={getCards}>
-                Click Here
-            </Button>}
+            
+            <div style={{
+        'position':'fixed',
+        'marginLeft':'30%',        
+        'height': '100vh'} }>
+ {cardData}
+            </div>
+            
+            
+            {toggler && 
+            <div style={{'display': 'flex',
+        
+                'justifyContent': 'center',
+                'align-items': 'center',
+                'height': '100vh'} }>
+
+            <Button sx={{fontSize:'20px',backgroundColor:'#ADD8E6',height:'100px',borderRadius:'2%'}}variant="contained" onClick={getCards}>
+                Search
+            </Button>
+            </div>
+            
+            }
+             
+           
         </div>
     )
 }
