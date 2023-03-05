@@ -77,13 +77,13 @@ const Matches = () => {
         
         resData.push(
              
-          <div style={{marginRight:'auto'}} className="row">
+          <div className="row">
             <div className="avatar">
               <img src={tempData.photourl} width={100} height={100} className="img" />
             </div>
             <div className="left">{tempData.name}</div>
             
-            <div  className="right" style={{ marginLeft: "200px" }}>
+            <div  className="right">
               <button className="accept" onClick={()=>connectUsers(tempData.email)}>+</button>
               <button className="reject">-</button>
             </div>
@@ -111,10 +111,10 @@ const Matches = () => {
       <div className="matches-container">
          <span style={{marginTop:'30px'}}>Your Matches</span>
         <div className="matches-textbox">
-         <Stack spacing={2} alignItems="center">
+       
   
           {comp}
-        </Stack>
+       
 
 
         </div>
