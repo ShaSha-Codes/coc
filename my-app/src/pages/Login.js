@@ -87,13 +87,16 @@ function Login() {
         justifyContent: "center",
         alignItems: "center",
         height: "100vh",
+        // backgroundImage: "url('https://png.pngtree.com/thumb_back/fh260/background/20200714/pngtree-modern-double-color-futuristic-neon-background-image_351866.jpg')",
+        // backgroundRepeat:"no-repeat",
+        // width:"100%"
       }}
     >
       <Paper
-        elevation={6}
+        elevation={7}
         sx={{
           height: "450px",
-          borderRadius: "20px",
+          borderRadius: "25px",
           margin: "20px",
           width: "600px",
         }}
