@@ -35,6 +35,7 @@ function CardsUi(props) {
       const ref = doc(db, "userInfo", props.data.email);
       const docSnap = await getDoc(ref);
       const data = docSnap.data();
+      
       await updateDoc(ref, {
         request: [...data.request, userValue.email],
       });

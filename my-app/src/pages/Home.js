@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 function Home() {
   return (
     <div className="HomePage">
-      <h1 className="text">Welcome to My Dating Site</h1>
+      <h1 className="text">Welcome to MatchMate</h1>
       <p className="text">Find your perfect match with us today!</p>
       <Stack direction="row" spacing={2} justifyContent="center">
         <Link to="/registration" className="cta-button">
