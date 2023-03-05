@@ -44,8 +44,8 @@ function CardsUi(props) {
   return (
     <div>
       <div className="card__container">
-    
-        <div className="card__back">
+        {/* {people.map(person => ( */}
+           
           <TinderCard
             className="swipe"
             onSwipe={(dir) => swiped(dir, props.data.name)}
@@ -57,14 +57,15 @@ function CardsUi(props) {
               className="card"
             >
               <h3>{props.data.name}</h3>
+                <h2 style={{color:"white", fontWeight:"bold"}}>Hobbies</h2>
+             <span style={{color:"white", fontWeight:"bold"}}>{props.data.hobbies.map((item)=>{return item})}</span> 
             </div>
           </TinderCard>
           
-        </div>
+
         
-     
+        {/* ))} */}
       </div>
-      
     </div>
   );
 }
