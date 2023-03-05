@@ -56,8 +56,10 @@ const Selection = () => {
         alignItems: "center",
         height: "100vh",
       }}
-    >
+    >  
+     
       <div style={{ maxWidth: "500px" }}>
+          
        {data?.map((item)=>{
         return (
           <TinderCard
@@ -85,6 +87,7 @@ const Selection = () => {
        }) }
         <button onClick={getData}>submit</button>
       </div>
+     
     </div>
   );
 };
