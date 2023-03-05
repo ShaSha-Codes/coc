@@ -55,8 +55,15 @@ function UserCard() {
     return (
         <div>
             <Header />
-            {cardData}
-         
+            
+            <div style={{
+        'position':'fixed',
+        'marginLeft':'30%',        
+        'height': '100vh'} }>
+ {cardData}
+            </div>
+            
+            
             {toggler && 
             <div style={{'display': 'flex',
         
@@ -70,6 +77,8 @@ function UserCard() {
             </div>
             
             }
+             
+           
         </div>
     )
 }

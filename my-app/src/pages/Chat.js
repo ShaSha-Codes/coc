@@ -48,7 +48,7 @@ const Chat = () => {
 
   React.useEffect(() => {
     dataGatherer()
-  }, []);
+  }, [0]);
 
  
   const handleKeyDown = async (e) => {
