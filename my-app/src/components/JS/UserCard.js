@@ -84,6 +84,8 @@ function UserCard() {
             
             }
 
+            <div style={{display:"flex",justifyContent:"center", alignItems:"center"}}><h1>You are caught up for today!</h1> </div>
+
 <div style={{ float: "left", padding: "70px" }}>
         <img src={thumbsDown} width={200} height={200} />
       </div>
