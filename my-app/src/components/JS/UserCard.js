@@ -57,9 +57,19 @@ function UserCard() {
             <Header />
             {cardData}
          
-            {toggler && <Button onClick={getCards}>
-                Click Here
-            </Button>}
+            {toggler && 
+            <div style={{'display': 'flex',
+        
+                'justifyContent': 'center',
+                'align-items': 'center',
+                'height': '100vh'} }>
+
+            <Button sx={{fontSize:'20px',backgroundColor:'#ADD8E6',height:'100px',borderRadius:'2%'}}variant="contained" onClick={getCards}>
+                Search
+            </Button>
+            </div>
+            
+            }
         </div>
     )
 }
