@@ -67,6 +67,7 @@
   align-items: center;
   font-size: x-large;
   flex-direction: column;
+  background-color: #d4d6e7;
 }
 
 .matches-textbox {

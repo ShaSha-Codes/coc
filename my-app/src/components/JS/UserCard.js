@@ -1,13 +1,17 @@
-import React from "react";
-import CardsUi from "./CardsUi";
-import Header from "./Header";
-import SwipeCards from "./SwipeCards";
-import { useSelector } from "react-redux";
-import { db } from "../../firebase";
-import { Button } from "@mui/material";
+import React from 'react'
+import CardsUi from './CardsUi'
+import Header from './Header'
+import SwipeCards from './SwipeCards'
+import {useSelector} from 'react-redux'
+import { db } from '../../firebase'
+import { Button } from '@mui/material'
+import '../CSS/UserDisplay.css'
 import thumbsUp from "../../assets/thumbs-up.svg";
 import thumbsDown from "../../assets/thumbs-down.svg";
-import { selectUserdata } from "../../feature/navSlice";
+
+import {
+    selectUserdata
+} from  '../../feature/navSlice'
 import { collection, query, where, getDocs } from "firebase/firestore";
 
 function UserCard() {
@@ -57,21 +61,39 @@ function UserCard() {
     setCardData(filteredData);
   };
 
-  return (
-    <div>
-      <Header />
-      {cardData}
+    return (
+        <div className='cards-body'>
+            <Header />
+            
+            <div>
+ {cardData}
+            </div>
+            
+            
+            {toggler && 
+            <div style={{'display': 'flex',
+        
+                'justifyContent': 'center',
+                'align-items': 'center',
+                'height': '100vh'} }>
 
-      {toggler && <Button onClick={getCards}>Click Here</Button>}
+            <Button sx={{fontSize:'20px',backgroundColor:'#ADD8E6',height:'100px',borderRadius:'2%'}}variant="contained" onClick={getCards}>
+                Search
+            </Button>
+            </div>
+            
+            }
 
-      <div style={{ float: "left", padding: "70px" }}>
+<div style={{ float: "left", padding: "70px" }}>
         <img src={thumbsDown} width={200} height={200} />
       </div>
       <div style={{ float: "right", padding: "70px" }}>
         <img src={thumbsUp} width={200} height={200} />
       </div>
-    </div>
-  );
+             
+           
+        </div>
+    )
 }
 
 export default UserCard;

@@ -14,6 +14,10 @@ import { onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc } from "@firebase/firestore";
 import { ADD_TO_USERDATA } from "../feature/navSlice";
 import { useDispatch } from "react-redux";
+import '../components/CSS/style.css';
+
+
+
 const useStyles = makeStyles((theme) => ({
   form: {
     display: "flex",
@@ -81,19 +85,22 @@ function Login() {
   };
 
   return (
-    <div
+    <div className="login-body"
       style={{
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
         height: "100vh",
+        // backgroundImage: "url('https://png.pngtree.com/thumb_back/fh260/background/20200714/pngtree-modern-double-color-futuristic-neon-background-image_351866.jpg')",
+        // backgroundRepeat:"no-repeat",
+        // width:"100%"
       }}
     >
       <Paper
-        elevation={6}
+        elevation={7}
         sx={{
           height: "450px",
-          borderRadius: "20px",
+          borderRadius: "25px",
           margin: "20px",
           width: "600px",
         }}
